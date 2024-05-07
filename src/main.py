@@ -1,14 +1,17 @@
 import sys
+from datetime import datetime 
 from user_acc import signup
 from user_acc import login
 from vitamins import vitamin_list
 from vitamins import vitamin_select
 from vitamins import vitamin_list_sex
 from vitamins import supplement_question
+from vitamins import add_to_user_file
 
-
+# username = ''
 user_age = 0
 user_sex = ''
+# current_reccomended_user_intake = 0
 
 # initial sign up, login or quit
 while True:
@@ -62,15 +65,21 @@ while True:
 
         # opens list of vitamins
         vit_reccomend_list = vit_reccomend_list_dict[0]
+        user_reccomended_intake = vit_reccomend_list[vit_select][age_select]
+        # current_reccomended_user_intake += user_reccomended_intake
 
         # prints reccomended intake
-        print(f'Your reccomended daily intake: {vit_reccomend_list[vit_select][age_select]}mg')
+        print(f'Your reccomended daily intake: {user_reccomended_intake}mg')
 
-        supplement_question()
+        # returns user_supp_mg
+        user_supp_mg = supplement_question(user_reccomended_intake)
 
-        
-        break
+        current_date = datetime.now().strftime("%d/%m/%y")
+        add_to_user_file(current_date, vit_select, user_supp_mg, user_reccomended_intake)
 
+        input('\nPress enter to continue...')
+
+    # view history 
     elif ch2 == 2:
         pass
     elif ch2 == 3:

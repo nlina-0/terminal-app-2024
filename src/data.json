@@ -1,0 +1,12 @@
+{
+    "name": "Alice",
+    "age": 25,
+    "address": {
+        "city": "London",
+        "country": "UK"
+    },
+    "hobbies": [
+        "reading",
+        "painting"
+    ]
+}
