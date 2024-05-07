@@ -15,27 +15,32 @@ def signup():
     # user_index = stored_username.index(username)
     print(f'{age}, {sex.capitalize()}')
 
-def login():
-    username = input('Enter username: ')
-    username_lower = username.lower() 
+    return age, sex
 
-    # list of usernames created from users.csv file
-    stored_username = []
-    stored_age = []
-    stored_sex = []
-    with open('users.csv', newline='') as f:
-        user_reader = csv.DictReader(f)
-        # creates list of usernames from users.csv file and is stored into stored_username
-        for row in user_reader:
-            stored_username.append(row['username'])
-            stored_age.append(row['age'])
-            stored_sex.append(row['sex'])
-    
-    # print out user details
-    if username_lower in stored_username:
-        print('\n********** User Account **********')
-        print(f'\nWelcome, {username.capitalize()}!')
-        user_index = stored_username.index(username)
-        print(f'{stored_age[user_index]}, {stored_sex[user_index].capitalize()}')
-    else:
-        print('Invalid username')
+
+def login():
+    while True:
+        username = input('Enter username: ')
+        username_lower = username.lower() 
+
+        # list of usernames created from users.csv file
+        stored_username = []
+        stored_age = []
+        stored_sex = []
+        with open('users.csv', newline='') as f:
+            user_reader = csv.DictReader(f)
+            # creates list of usernames from users.csv file and is stored into stored_username
+            for row in user_reader:
+                stored_username.append(row['username'])
+                stored_age.append(row['age'])
+                stored_sex.append(row['sex'])
+        
+        # print out user details
+        if username_lower in stored_username:
+            print('\n********** User Account **********')
+            print(f'\nWelcome, {username.capitalize()}!')
+            user_index = stored_username.index(username)
+            print(f'{stored_age[user_index]}, {stored_sex[user_index].capitalize()}')
+            return stored_age[user_index], stored_sex[user_index]
+        else:
+            print('Invalid username')
