@@ -1,14 +1,14 @@
+import sys
 from user_acc import signup
 from user_acc import login
-import sys
 from vitamins import vitamin_list
 from vitamins import vitamin_select
-# from vitamins import vitamin_select
-# import user_acc // why can't do this?
+from vitamins import vitamin_list_sex
+from vitamins import supplement_question
 
 
 user_age = 0
-user_sex = []
+user_sex = ''
 
 # initial sign up, login or quit
 while True:
@@ -31,7 +31,7 @@ while True:
         print('Invalid Choice!')
 
 
-intake_list = []
+# intake_list = []
 # option to track new vitamin or view history
 while True:
     print('\n********** Options **********')
@@ -44,9 +44,33 @@ while True:
     if ch2 == 1:
         vitamin_list()
         user_vit_select = input('\nEnter the number: ')
-        vitamin_select(user_vit_select)
-        # vitamin_reccomend_intake()
+
+        # prints out user selection based on list
+        vit_select = vitamin_select(user_vit_select)
+        
+        # calls list of vitamins based on male/female and prints out list
+        vit_reccomend_list_dict = vitamin_list_sex(user_sex)
+
+        # defining the age selection
+        age_select = ''
+        if 19 <= user_age <= 50:
+            age_select += '19to50'
+        elif user_age >= 51:
+            age_select += '51andup'
+        elif user_age <= 18:
+            age_select += '14to18'
+
+        # opens list of vitamins
+        vit_reccomend_list = vit_reccomend_list_dict[0]
+
+        # prints reccomended intake
+        print(f'Your reccomended daily intake: {vit_reccomend_list[vit_select][age_select]}mg')
+
+        supplement_question()
+
+        
         break
+
     elif ch2 == 2:
         pass
     elif ch2 == 3:
