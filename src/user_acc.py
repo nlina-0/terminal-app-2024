@@ -7,7 +7,7 @@ def signup():
     sex = input('Male/Female: ')
 
     # appends the username, password, age and sex to users.csv file
-    with open('users.csv', 'a') as f:
+    with open('user_acc.csv', 'a') as f:
         f.write(f'{username_lower},{age},{sex}\n')
     
     print('\n********** User Account **********')
@@ -15,7 +15,7 @@ def signup():
     # user_index = stored_username.index(username)
     print(f'{age}, {sex.capitalize()}')
 
-    return age, sex
+    return age, sex, username_lower
 
 
 def login():
@@ -27,7 +27,7 @@ def login():
         stored_username = []
         stored_age = []
         stored_sex = []
-        with open('users.csv', newline='') as f:
+        with open('user_acc.csv', newline='') as f:
             user_reader = csv.DictReader(f)
             # creates list of usernames from users.csv file and is stored into stored_username
             for row in user_reader:
@@ -41,6 +41,6 @@ def login():
             print(f'\nWelcome, {username.capitalize()}!')
             user_index = stored_username.index(username)
             print(f'{stored_age[user_index]}, {stored_sex[user_index].capitalize()}')
-            return stored_age[user_index], stored_sex[user_index]
+            return stored_age[user_index], stored_sex[user_index], username
         else:
             print('Invalid username')

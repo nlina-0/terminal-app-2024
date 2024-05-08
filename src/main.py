@@ -1,4 +1,5 @@
 import sys
+import csv
 from datetime import datetime 
 from user_acc import signup
 from user_acc import login
@@ -8,10 +9,10 @@ from vitamins import vitamin_list_sex
 from vitamins import supplement_question
 from vitamins import add_to_user_file
 
-# username = ''
+
+username = ''
 user_age = 0
 user_sex = ''
-# current_reccomended_user_intake = 0
 
 # initial sign up, login or quit
 while True:
@@ -21,12 +22,16 @@ while True:
     print('3.Exit')
     ch = int(input('\nEnter your choice: '))
     if ch == 1:
-        signup()
-        break
-    elif ch == 2:
-        login_age, login_sex = login()
+        login_age, login_sex, login_username = signup()
         user_age += int(login_age)
         user_sex += login_sex
+        username += login_username
+        break
+    elif ch == 2:
+        login_age, login_sex, login_username = login()
+        user_age += int(login_age)
+        user_sex += login_sex
+        username += login_username
         break
     elif ch == 3:
         sys.exit("Goodbye!")
@@ -34,7 +39,6 @@ while True:
         print('Invalid Choice!')
 
 
-# intake_list = []
 # option to track new vitamin or view history
 while True:
     print('\n********** Options **********')
@@ -66,22 +70,38 @@ while True:
         # opens list of vitamins
         vit_reccomend_list = vit_reccomend_list_dict[0]
         user_reccomended_intake = vit_reccomend_list[vit_select][age_select]
-        # current_reccomended_user_intake += user_reccomended_intake
 
         # prints reccomended intake
         print(f'Your reccomended daily intake: {user_reccomended_intake}mg')
 
-        # returns user_supp_mg
-        user_supp_mg = supplement_question(user_reccomended_intake)
+        # returns user supplement intake (mg) and if user met reccomended intake
+        user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
 
         current_date = datetime.now().strftime("%d/%m/%y")
-        add_to_user_file(current_date, vit_select, user_supp_mg, user_reccomended_intake)
+        # fix username <----------------------------------
+        add_to_user_file(username, current_date, vit_select, user_supp_mg, user_reccomended_intake, recc_met)
 
         input('\nPress enter to continue...')
 
     # view history 
     elif ch2 == 2:
+        print('\n********** History **********')
+        with open('user_data.csv', 'r') as f:
+            reader = csv.DictReader(f)
+
+            for row in reader:
+                if row['user'] == username:
+                    # print(row)
+                    print("User:", row['user'])
+                    print("Date:", row['date'])
+                    print("Vitamin:", row['vitamin'])
+                    print("Recommended Intake:", row['recommended intake'])
+                    print("Supplement Intake:", row['supplement intake'])
+                    print("Recommended Met:", row['recommended met'])
+                    print() 
         pass
     elif ch2 == 3:
         sys.exit("Goodbye!")
+    else:
+        print('Invalid Choice!')
 
