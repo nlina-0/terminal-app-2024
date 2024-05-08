@@ -55,7 +55,7 @@ while True:
             # prints out user selection based on list
             vit_select = vitamin_select(user_vit_select)
             
-            # calls list of vitamins based on male/female and prints out list
+            # calls list of recommended daily intake of vitamins
             vit_reccomend_list_dict = vitamin_open_list()
 
             # defining the age selection
@@ -78,21 +78,22 @@ while True:
             user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
 
             # adds data to user file 
-            # i think this can be added to a def?
             current_date = datetime.now().strftime("%d/%m/%y")
+            # need to check if data for vitamin selected already exists
             write_to_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
 
             input('\nPress enter to continue...')
 
         # view history 
         elif ch2 == 2:
+
+            # how do i only read the latest version?
             print('\n********** History **********')
             with open('user_data.csv', 'r') as f:
                 reader = csv.DictReader(f)
 
                 for row in reader:
                     if row['user'] == username:
-                        # print(row)
                         print("User:", row['user'].capitalize())
                         print("Date:", row['date'])
                         print("Vitamin:", row['vitamin'].title())

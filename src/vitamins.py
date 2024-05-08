@@ -40,8 +40,8 @@ def vitamin_open_list():
     return intake_list
 
 def supplement_question(reccomended_intake):
-
-    supp_ques = input('\nAre you taking any supplments (Y/N)? ')
+    # do i need to add error handling here?
+    supp_ques = input('\nAre you taking any supplments? [y/n]: ')
     supp_ques_upper = supp_ques.upper()
     if supp_ques_upper == 'Y':
         # record into file
