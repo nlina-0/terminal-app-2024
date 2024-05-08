@@ -5,14 +5,13 @@ from user_acc import signup
 from user_acc import login
 from vitamins import vitamin_list
 from vitamins import vitamin_select
-from vitamins import vitamin_list_sex
+from vitamins import vitamin_open_list
 from vitamins import supplement_question
 from vitamins import add_to_user_file
 
 
 username = ''
 user_age = 0
-user_sex = ''
 
 # initial sign up, login or quit
 while True:
@@ -22,15 +21,13 @@ while True:
     print('3.Exit')
     ch = int(input('\nEnter your choice: '))
     if ch == 1:
-        login_age, login_sex, login_username = signup()
+        login_age, login_username = signup()
         user_age += int(login_age)
-        user_sex += login_sex
         username += login_username
         break
     elif ch == 2:
-        login_age, login_sex, login_username = login()
+        login_age, login_username = login()
         user_age += int(login_age)
-        user_sex += login_sex
         username += login_username
         break
     elif ch == 3:
@@ -56,7 +53,7 @@ while True:
         vit_select = vitamin_select(user_vit_select)
         
         # calls list of vitamins based on male/female and prints out list
-        vit_reccomend_list_dict = vitamin_list_sex(user_sex)
+        vit_reccomend_list_dict = vitamin_open_list()
 
         # defining the age selection
         age_select = ''
@@ -77,8 +74,9 @@ while True:
         # returns user supplement intake (mg) and if user met reccomended intake
         user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
 
+        # adds data to user file 
+        # i think this can be added to a def?
         current_date = datetime.now().strftime("%d/%m/%y")
-        # fix username <----------------------------------
         add_to_user_file(username, current_date, vit_select, user_supp_mg, user_reccomended_intake, recc_met)
 
         input('\nPress enter to continue...')

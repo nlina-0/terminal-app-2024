@@ -20,15 +20,12 @@ def vitamin_select(x):
             return 'magnesium'
     
 
-def vitamin_list_sex(y):
+def vitamin_open_list():
     intake_list = []
     
-    if y == 'female':
-        with open('vitamins_female.json') as f:
-            reccomended_intake_list = json.load(f)
-            intake_list.append(reccomended_intake_list)
-    elif y == 'male':
-        pass
+    with open('vitamins_list.json') as f:
+        reccomended_intake_list = json.load(f)
+        intake_list.append(reccomended_intake_list)
 
     return intake_list
 
@@ -43,10 +40,10 @@ def add_to_user_file(user, date, vitamin, user_supp, user_rec_intake, recommende
         'recommended met': recommended_met
     }
 
-    with open('user_data.csv', 'w') as f:
+    with open('user_data.csv', 'a') as f:
         fields = ['user', 'date', 'vitamin', 'supplement intake', 'recommended intake', 'recommended met']
         output_f = csv.DictWriter(f, fieldnames=fields)
-        output_f.writeheader()
+        # output_f.writeheader()
         output_f.writerow(user_data)
 
 
@@ -70,6 +67,7 @@ def supplement_question(reccomended_intake):
     elif supp_ques_upper == 'N':
         # grad reccomended foods from list
         print('Here are some reccomended foods to increase vitamin intake: ')
+        
     else:
         print('Invalid Choice!')
 
