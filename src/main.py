@@ -31,8 +31,9 @@ while True:
         username += login_username
         break
     elif ch == 3:
-        sys.exit("Goodbye!")
+        sys.exit("Goodbye, take care!")
     else:
+        # add error handling here
         print('Invalid Choice!')
 
 
@@ -69,7 +70,7 @@ while True:
         user_reccomended_intake = vit_reccomend_list[vit_select][age_select]
 
         # prints reccomended intake
-        print(f'Your reccomended daily intake: {user_reccomended_intake}mg')
+        print(f'Your reccomended daily intake: {user_reccomended_intake}')
 
         # returns user supplement intake (mg) and if user met reccomended intake
         user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
@@ -77,7 +78,7 @@ while True:
         # adds data to user file 
         # i think this can be added to a def?
         current_date = datetime.now().strftime("%d/%m/%y")
-        add_to_user_file(username, current_date, vit_select, user_supp_mg, user_reccomended_intake, recc_met)
+        add_to_user_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
 
         input('\nPress enter to continue...')
 
@@ -90,16 +91,16 @@ while True:
             for row in reader:
                 if row['user'] == username:
                     # print(row)
-                    print("User:", row['user'])
+                    print("User:", row['user'].capitalize())
                     print("Date:", row['date'])
-                    print("Vitamin:", row['vitamin'])
+                    print("Vitamin:", row['vitamin'].capitalize())
                     print("Recommended Intake:", row['recommended intake'])
                     print("Supplement Intake:", row['supplement intake'])
                     print("Recommended Met:", row['recommended met'])
                     print() 
         pass
     elif ch2 == 3:
-        sys.exit("Goodbye!")
+        sys.exit("Goodbye, take care!")
     else:
         print('Invalid Choice!')
 

@@ -10,9 +10,7 @@ def signup():
         f.write(f'{username_lower},{age}\n')
     
     print('\n********** User Account **********')
-    print(f'\nWelcome, {username.capitalize()}!')
-    # user_index = stored_username.index(username)
-    print(f'{age}')
+    print(f'\nWelcome, {username.capitalize()}! {age}y.o')
 
     return age, username_lower
 
