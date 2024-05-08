@@ -7,7 +7,7 @@ from vitamins import vitamin_list
 from vitamins import vitamin_select
 from vitamins import vitamin_open_list
 from vitamins import supplement_question
-from vitamins import add_to_user_file
+from operations import write_to_file
 
 
 username = ''
@@ -80,7 +80,7 @@ while True:
             # adds data to user file 
             # i think this can be added to a def?
             current_date = datetime.now().strftime("%d/%m/%y")
-            add_to_user_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
+            write_to_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
 
             input('\nPress enter to continue...')
 
