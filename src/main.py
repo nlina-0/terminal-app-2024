@@ -19,88 +19,94 @@ while True:
     print('\n1.Signup')
     print('2.Login')
     print('3.Exit')
-    ch = int(input('\nEnter your choice: '))
-    if ch == 1:
-        login_age, login_username = signup()
-        user_age += int(login_age)
-        username += login_username
-        break
-    elif ch == 2:
-        login_age, login_username = login()
-        user_age += int(login_age)
-        username += login_username
-        break
-    elif ch == 3:
-        sys.exit("Goodbye, take care!")
-    else:
-        # add error handling here
-        print('Invalid Choice!')
+    try:
+        ch = int(input('\nEnter your choice: '))
+        if ch == 1:
+            login_age, login_username = signup()
+            user_age += int(login_age)
+            username += login_username
+            break
+        elif ch == 2:
+            login_age, login_username = login()
+            user_age += int(login_age)
+            username += login_username
+            break
+        elif ch == 3:
+            sys.exit("Goodbye, take care!")
+        else:
+            print('\nInvalid Choice! Please choose between 1, 2, 3\n')
+
+    except ValueError:
+        print('\nInvalid Choice! Please choose between 1, 2, 3\n')
 
 
 # option to track new vitamin or view history
 while True:
     print('\n********** Options **********')
     print('\n1.Select vitamin to track')
-    # select a date or view all
-    print('2.View history') 
+    print('2.View history') # view all or select date?
     print('3.Exit')
-    ch2 = int(input('\nEnter your choice: '))
+    try:
+        ch2 = int(input('\nEnter your choice: '))
+        if ch2 == 1:
+            vitamin_list()
+            user_vit_select = input('\nEnter the number: ')
 
-    if ch2 == 1:
-        vitamin_list()
-        user_vit_select = input('\nEnter the number: ')
+            # prints out user selection based on list
+            vit_select = vitamin_select(user_vit_select)
+            
+            # calls list of vitamins based on male/female and prints out list
+            vit_reccomend_list_dict = vitamin_open_list()
 
-        # prints out user selection based on list
-        vit_select = vitamin_select(user_vit_select)
+            # defining the age selection
+            age_select = ''
+            if 19 <= user_age <= 50:
+                age_select += '19to50'
+            elif user_age >= 51:
+                age_select += '51andup'
+            elif user_age <= 18:
+                age_select += '14to18'
+
+            # opens list of vitamins
+            vit_reccomend_list = vit_reccomend_list_dict[0]
+            user_reccomended_intake = vit_reccomend_list[vit_select][age_select]
+
+            # prints reccomended intake
+            print(f'Your reccomended daily intake: {user_reccomended_intake}')
+
+            # returns user supplement intake (mg) and if user met reccomended intake
+            user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
+
+            # adds data to user file 
+            # i think this can be added to a def?
+            current_date = datetime.now().strftime("%d/%m/%y")
+            add_to_user_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
+
+            input('\nPress enter to continue...')
+
+        # view history 
+        elif ch2 == 2:
+            print('\n********** History **********')
+            with open('user_data.csv', 'r') as f:
+                reader = csv.DictReader(f)
+
+                for row in reader:
+                    if row['user'] == username:
+                        # print(row)
+                        print("User:", row['user'].capitalize())
+                        print("Date:", row['date'])
+                        print("Vitamin:", row['vitamin'].title())
+                        print("Recommended Intake:", row['recommended intake'])
+                        print("Supplement Intake:", row['supplement intake'])
+                        print("Recommended Met:", row['recommended met'])
+                        print() 
+            
+            input('\nPress enter to continue...')
         
-        # calls list of vitamins based on male/female and prints out list
-        vit_reccomend_list_dict = vitamin_open_list()
-
-        # defining the age selection
-        age_select = ''
-        if 19 <= user_age <= 50:
-            age_select += '19to50'
-        elif user_age >= 51:
-            age_select += '51andup'
-        elif user_age <= 18:
-            age_select += '14to18'
-
-        # opens list of vitamins
-        vit_reccomend_list = vit_reccomend_list_dict[0]
-        user_reccomended_intake = vit_reccomend_list[vit_select][age_select]
-
-        # prints reccomended intake
-        print(f'Your reccomended daily intake: {user_reccomended_intake}')
-
-        # returns user supplement intake (mg) and if user met reccomended intake
-        user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
-
-        # adds data to user file 
-        # i think this can be added to a def?
-        current_date = datetime.now().strftime("%d/%m/%y")
-        add_to_user_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
-
-        input('\nPress enter to continue...')
-
-    # view history 
-    elif ch2 == 2:
-        print('\n********** History **********')
-        with open('user_data.csv', 'r') as f:
-            reader = csv.DictReader(f)
-
-            for row in reader:
-                if row['user'] == username:
-                    # print(row)
-                    print("User:", row['user'].capitalize())
-                    print("Date:", row['date'])
-                    print("Vitamin:", row['vitamin'].capitalize())
-                    print("Recommended Intake:", row['recommended intake'])
-                    print("Supplement Intake:", row['supplement intake'])
-                    print("Recommended Met:", row['recommended met'])
-                    print() 
-        pass
-    elif ch2 == 3:
-        sys.exit("Goodbye, take care!")
-    else:
-        print('Invalid Choice!')
-
+        elif ch2 == 3:
+            sys.exit("Goodbye, take care!")
+        else:
+            print('\nInvalid Choice! Please choose between 1, 2, 3\n')
+    
+    except ValueError:
+        print('\nInvalid Choice! Please choose between 1, 2, 3\n')
