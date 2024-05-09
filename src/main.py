@@ -1,14 +1,8 @@
 import sys
-import csv
 from datetime import datetime 
-from user_acc import signup
-from user_acc import login
-from vitamins import vitamin_list
-from vitamins import vitamin_select
-from vitamins import vitamin_open_list
-from vitamins import supplement_question
-from operations import write_data
-from operations import read_history
+import user_acc
+import vitamins 
+import operations
 
 username = ''
 user_age = 0
@@ -22,12 +16,12 @@ while True:
     try:
         ch = int(input('\nEnter your choice: '))
         if ch == 1:
-            login_age, login_username = signup()
+            login_age, login_username = user_acc.signup()
             user_age += int(login_age)
             username += login_username
             break
         elif ch == 2:
-            login_age, login_username = login()
+            login_age, login_username = user_acc.login()
             user_age += int(login_age)
             username += login_username
             break
@@ -49,14 +43,14 @@ while True:
     try:
         ch2 = int(input('\nEnter your choice: '))
         if ch2 == 1:
-            vitamin_list()
+            vitamins.vitamin_list()
             user_vit_select = input('\nEnter the number: ')
 
             # prints out user selection based on list
-            vit_select = vitamin_select(user_vit_select)
+            vit_select = vitamins.vitamin_select(user_vit_select)
             
             # calls list of recommended daily intake of vitamins
-            vit_reccomend_list_dict = vitamin_open_list()
+            vit_reccomend_list_dict = vitamins.vitamin_open_list()
 
             # defining the age selection
             age_select = ''
@@ -75,26 +69,25 @@ while True:
             print(f'Your reccomended daily intake: {user_reccomended_intake}')
 
             # returns user supplement intake (mg) and if user met reccomended intake
-            user_supp_mg, recc_met = supplement_question(user_reccomended_intake)
+            user_supp_mg, recc_met = vitamins.supplement_question(user_reccomended_intake)
 
             # adds data to user file 
             current_date = datetime.now().strftime("%d/%m/%y")
             # checks to see if data already exists, asks user if they want to update existinf data, if no data exists then a new line is created
-            write_data(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
+            operations.write_data(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
 
             input('\nPress enter to continue...')
 
         # view history 
         elif ch2 == 2:
             print('\n********** History **********')
-            
             # reads user history
-            read_history(username)
-
+            operations.read_history(username)
             input('\nPress enter to continue...')
-        
+
         elif ch2 == 3:
             sys.exit("Goodbye, take care!")
+
         else:
             print('\nInvalid Choice! Please choose between 1, 2, 3\n')
     

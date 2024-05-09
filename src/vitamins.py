@@ -9,7 +9,6 @@ def vitamin_list():
     for key, value in enumerate(vitamins):
         print(f'{key + 1}. {value}')
 
-#continue adding rest of list...
 def vitamin_select(x):
     match x:
         case '1':
