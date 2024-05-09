@@ -8,7 +8,7 @@ from vitamins import vitamin_select
 from vitamins import vitamin_open_list
 from vitamins import supplement_question
 from operations import write_to_file
-
+from operations import read_history
 
 username = ''
 user_age = 0
@@ -89,18 +89,11 @@ while True:
 
             # how do i only read the latest version?
             print('\n********** History **********')
-            with open('user_data.csv', 'r') as f:
-                reader = csv.DictReader(f)
+            
+            # read_history(username)
+            
+            # check for duplicates 
 
-                for row in reader:
-                    if row['user'] == username:
-                        print("User:", row['user'].capitalize())
-                        print("Date:", row['date'])
-                        print("Vitamin:", row['vitamin'].title())
-                        print("Recommended Intake:", row['recommended intake'])
-                        print("Supplement Intake:", row['supplement intake'])
-                        print("Recommended Met:", row['recommended met'])
-                        print() 
             
             input('\nPress enter to continue...')
         
