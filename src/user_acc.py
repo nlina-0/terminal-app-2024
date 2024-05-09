@@ -1,4 +1,7 @@
-import csv 
+import csv
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 
 def signup():
     username = input('Create username: ')
@@ -17,9 +20,21 @@ def signup():
 
 def login():
     while True:
-        username = input('Enter username: ')
-        username_lower = username.lower() 
+        while True:
+            print(f'1.Enter username \n2.Return to main menu')
+            choice = input(f'\n{Fore.CYAN}Enter your choice: ')
+            print('\033[39m')
+            if choice == '1':
+                break
+            if choice == '2':
+                return None
+            else:  
+                print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2')
+                print('\033[39m')
 
+        username = input(f'{Fore.CYAN}Enter username: ')
+        print('\033[39m')
+        username_lower = username.lower() 
         # list of usernames created from users.csv file
         stored_username = []
         stored_age = []
@@ -34,8 +49,10 @@ def login():
         if username_lower in stored_username:
             print('\n********** User Account **********')
             user_index = stored_username.index(username)
-            print(f'\nWelcome, {username.capitalize()}! {stored_age[user_index]}y.o')
-            # print(f'{stored_age[user_index]}')
+            print(f'\nWelcome, {username.capitalize()}! {stored_age[user_index]}y.o\n')
             return stored_age[user_index], username
         else:
-            print('Invalid username')
+            print(f'{Fore.RED}{Style.BRIGHT}Invalid username')
+            print('\033[39m')
+
+
