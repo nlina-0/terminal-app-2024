@@ -7,7 +7,7 @@ from vitamins import vitamin_list
 from vitamins import vitamin_select
 from vitamins import vitamin_open_list
 from vitamins import supplement_question
-from operations import write_to_file
+from operations import write_data
 from operations import read_history
 
 username = ''
@@ -79,22 +79,18 @@ while True:
 
             # adds data to user file 
             current_date = datetime.now().strftime("%d/%m/%y")
-            # need to check if data for vitamin selected already exists
-            write_to_file(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
+            # checks to see if data already exists, asks user if they want to update existinf data, if no data exists then a new line is created
+            write_data(username, current_date, vit_select, user_reccomended_intake, user_supp_mg, recc_met)
 
             input('\nPress enter to continue...')
 
         # view history 
         elif ch2 == 2:
-
-            # how do i only read the latest version?
             print('\n********** History **********')
             
-            # read_history(username)
-            
-            # check for duplicates 
+            # reads user history
+            read_history(username)
 
-            
             input('\nPress enter to continue...')
         
         elif ch2 == 3:
