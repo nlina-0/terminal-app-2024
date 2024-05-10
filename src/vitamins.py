@@ -20,12 +20,12 @@ def vitamin_list():
             ch = int(input(f'\n{Fore.CYAN}Enter the number: '))
             print('\033[39m')
             if ch < 1 or ch > 4:
-                print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
+                print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3, 4\n')
             else:
                 return ch
             
         except ValueError:
-            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
+            print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3, 4\n')
 
 
 def vitamin_select(x):
@@ -82,7 +82,7 @@ def supplement_question(reccomended_intake):
                 return user_supp_mg, recc_met
             
             else:
-                print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between y or n\n')
+                print(f'{Fore.RED}Invalid Choice! Please choose between y or n\n')
         
         except (ValueError, TypeError, KeyError):
-            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between y or n\n')
+            print(f'\n{Fore.RED}Invalid Choice! Please choose between y or n\n')

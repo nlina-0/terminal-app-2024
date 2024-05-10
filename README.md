@@ -41,7 +41,8 @@ Data recorded for the same vitamin more than once on the same day will be overwr
 ## Development Plan
 
 ## Installation Guide
-Change directory into **/src** folder. Input following code into command line:
+1. Change directory into **/src** folder.
+2. Input following code into command line:
 ```bash
 ./run_app.sh
 ```

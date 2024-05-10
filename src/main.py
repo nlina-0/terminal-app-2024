@@ -37,9 +37,9 @@ while True:
         elif ch == 3:
             sys.exit('Goodbye, take care!\n')
         else:
-            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3\n')
+            print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3\n')
     except ValueError:
-        print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3\n')
+        print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3\n')
 
 
 # Options menu, select vitamin to track, view history or exit
@@ -95,7 +95,7 @@ while True:
             sys.exit(f'Goodbye, take care!')
 
         else:
-            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3\n')
+            print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3\n')
     
     except (ValueError, TypeError, KeyError):
-        print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3\n')
+        print(f'\n{Fore.RED}Invalid Choice! Please choose between 1, 2, 3\n')

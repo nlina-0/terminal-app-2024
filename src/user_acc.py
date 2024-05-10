@@ -6,7 +6,13 @@ colorama.init(autoreset=True)
 def signup():
     username = input('Create username: ')
     username_lower = username.lower()
-    age = input('Age: ')
+    
+    while True:
+        try:
+            age = int(input('Age: '))
+            break
+        except ValueError:
+            print(f'{Fore.RED}Age must be a valid integer. Please try again.')
 
     # Appends the username, password and age to users.csv file
     with open('user_acc.csv', 'a') as f:
@@ -28,7 +34,7 @@ def login():
             if choice == '2':
                 return None
             else:  
-                print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2')
+                print(f'{Fore.RED}Invalid Choice! Please choose between 1, 2')
                 print('\033[39m')
 
         username = input('Enter username: ')
@@ -50,7 +56,7 @@ def login():
             print(f'\nWelcome, {username.capitalize()}! {stored_age[user_index]}y.o\n')
             return stored_age[user_index], username
         else:
-            print(f'{Fore.RED}{Style.BRIGHT}Invalid username')
+            print(f'{Fore.RED}Invalid username')
             print('\033[39m')
 
 
