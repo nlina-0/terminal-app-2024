@@ -63,7 +63,13 @@ def supplement_question(reccomended_intake):
             supp_ques = input('\nAre you taking any supplments? [y/n]: ')
             supp_ques_upper = supp_ques.upper()
             if supp_ques_upper == 'Y':
-                user_supp_mg = int(input('How much are you taking daily? '))
+                
+                while True:
+                    try:
+                        user_supp_mg = int(input('How much are you taking daily? '))
+                        break
+                    except ValueError:
+                        print(f'{Fore.RED}Must be a valid integer. Please try again.')
                 
                 if user_supp_mg >= reccomended_intake:
                     print(f'{Fore.GREEN}You are taking a sufficent amount!')
