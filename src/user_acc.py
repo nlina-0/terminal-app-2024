@@ -8,7 +8,7 @@ def signup():
     username_lower = username.lower()
     age = input('Age: ')
 
-    # appends the username, password and age to users.csv file
+    # Appends the username, password and age to users.csv file
     with open('user_acc.csv', 'a') as f:
         f.write(f'{username_lower},{age}\n')
     
@@ -33,12 +33,12 @@ def login():
 
         username = input('Enter username: ')
         username_lower = username.lower() 
-        # list of usernames created from users.csv file
+        # List of usernames created from users.csv file
         stored_username = []
         stored_age = []
         with open('user_acc.csv', newline='') as f:
             user_reader = csv.DictReader(f)
-            # creates list of usernames from users.csv file and is stored into stored_username
+            # Creates list of usernames from users.csv file and is stored into stored_username
             for row in user_reader:
                 stored_username.append(row['username'])
                 stored_age.append(row['age'])

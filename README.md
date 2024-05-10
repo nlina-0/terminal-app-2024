@@ -11,41 +11,57 @@
 A terminal application that tracks user vitamins/supplement intake.
 
 ### 1. User signin and login
+Starts with menu 1, the user is given 3 options, signup, login and exit. 
 
-- At the starting menu the user is given 3 options, signup, login and exit.
-    - Signup: User creates account, enters name and age.
-    - Login: If user has existing account, user can login using name.
+- **Signup**: User creates account, enters name and age.
+    - Stores new user account information into user_acc.csv (user name and age).
+- **Login**: If user has existing account, user can login using name.
+- **Exit**: Terminates the program.
 
-- Stores user account information in .csv (user name and age).
+The options will be looped over if the user does not choose valid option. 
 
 ### 2. Vitamin/supplement tracker
-- User selects vitamin from list to track.
-- User is given recommended daily intake based on age.
-- User is asked if they take any supplements, if yes, user is asked to enter supplment intake and the data is stored into .csv
+User is presented with menu 2. The options are to track vitamin, view history or exit program. If an invalid choice is entered the menu will loop over.
+- User is given a list of vitamins to choose from.
+- User is given recommended daily intake based on age when vitamin is selected.
+- User is asked if they take any supplements:
+    - If yes, user is asked to enter supplment intake and the data is stored into user_data.csv.
+    - If no, nothing will be recorded.
 - The app will inform the user if they have met their daily recommended intake.
-    - If the same vitamin is recorded more than once within a day, the user will be asked if they want to overwrite existing data.
+- Once this is complete, the user will be taken back to menu 2. 
+
+Data recorded for the same vitamin more than once on the same day will be overwritten or omitted. The user will have an option to overwrite. 
 
 ### 3. View history
-- User can view dated history of vitamin intake.
-- The app will read through user_data.csv and only return the data of current user.
+- User can view history of vitamin intake.
+- The app will read through user_data.csv and only return the data of current user.  
+- The user can press enter to continue back to menu 2. 
+<br />
 
+## Development Plan
 
 ## Installation Guide
-
-Input following code into command line.
+Change directory into **/src** folder. Input following code into command line:
 ```bash
-./src/run_app.sh
+./run_app.sh
 ```
-- The script will create virtual enviornment and install required dependencies. 
+The script will:
+1. Check to see if you have Python3 and pip3 are installed. If not, a link will be provided to follow through with. For manual installation, please look below to system requirements.
+2. Create virtual enviornment.
+3. Install required dependencies. 
+4. Run the application in terminal.
 
 #### Dependencies
 - colorama
 
 #### System Requirements
-
-This application requires Python 3.10 to be installed. Check what version of Python you currently have installed by running the following command:
+- **Python 3** is needed to run this application. To check if you have Python3 installed or to check what version you have, input the following command:
 ```bash
 python --version
+```
+- **Pip3** is needed to run this application. To see if you have pip3 installed, input the following command:
+```bash
+pip --version
 ```
 
 <!-- ## Referenced Source -->

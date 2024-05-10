@@ -17,7 +17,7 @@ def read_history(username):
                     print(f'Recommended Met: {row["recommended met"]}')
                     print() 
 
-# Overwrites existing data if user wants to
+# Overwrites existing data
 def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_met=0):
     updated = False
     user_data = {
@@ -42,7 +42,7 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
         # Iterate over the data and identify the row to update
         for row in rows:
             if row['user'] == name and row['date'] == date and row['vitamin'] == vitamin:
-                # ask user if they want to update:
+                # Ask user if they want to overwrite existing data:
                 print('\n********** Record Exists **********')
                 print(f'\nData for {vitamin.title()} on {date} already exists!')
                 print(f'Supplement Intake: {row["supplement intake"]}')
