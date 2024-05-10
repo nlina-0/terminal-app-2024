@@ -17,37 +17,35 @@ def vitamin_list():
             print(f'{key + 1}. {value}')
 
         try:
-            user_vit_select = int(input(f'\n{Fore.CYAN}Enter the number: '))
+            ch = int(input(f'\n{Fore.CYAN}Enter the number: '))
             print('\033[39m')
-            if user_vit_select < 1 or user_vit_select > 4:
+            if ch < 1 or ch > 4:
                 print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
             else:
-                return user_vit_select
-        
-        except (TypeError, KeyError):
+                return ch
+            
+        except ValueError:
             print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
 
+
 def vitamin_select(x):
-    # add expectation here...KeyError caused
     match x:
-        case '1':
+        case 1:
             print('\n********** Fish Oil ********** \n')
             print('unit: mg')
             return 'fish oil'
-        case '2':
+        case 2:
             print('\n********** Magnesium ********** \n')
             print('unit: mg')
             return 'magnesium'
-        case '3':
+        case 3:
             print('\n********** Vitamin D ********** \n')
             print('unit: IU')
             return 'vitamin d'
-        case '4':
+        case 4:
             print('\n********** B12 ********** \n')
             print('unit: mcg')
             return 'b12'
-        case _:
-            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
     
 
 def vitamin_open_list():
@@ -67,7 +65,6 @@ def supplement_question(reccomended_intake):
             if supp_ques_upper == 'Y':
                 user_supp_mg = int(input('How much are you taking daily? '))
                 
-                # add_to_user_file()
                 if user_supp_mg >= reccomended_intake:
                     print(f'{Fore.GREEN}You are taking a sufficent amount!')
                     recc_met = 'Yes :)'
@@ -75,14 +72,12 @@ def supplement_question(reccomended_intake):
                 
                 else:
                     print(f'{Fore.YELLOW}You are not taking a sufficent amount!')
-                    # print('Reccomended foods to increase vitamin intake: ...')
                     recc_met = 'No :('
                     return user_supp_mg, recc_met
             
             elif supp_ques_upper == 'N':
                 user_supp_mg = 0
                 recc_met = 'Unsure, no supplments were recorded :/'
-                # print('Here are some reccomended foods to increase vitamin intake: ')
                 return user_supp_mg, recc_met
             
             else:

@@ -4,7 +4,9 @@
 [Ghithub Terminal App 2024](https://github.com/nlina-0/terminal-app-2024)
 
 ## Style Guide
-pep 8
+[PEP 8](https://peps.python.org/pep-0008/)
+
+<!-- ## Referenced Source -->
 
 ## Features
 
@@ -19,14 +21,11 @@ A terminal application that tracks user vitamins/supplement intake.
         - if user has existing account, user can login using name
 
 2. Vitamin/supplement intake
-    - user selects vitamin from list to track
-    - user is given recommended daily intake based on age
-    - terminal ask if user takes any supplements, if yes, user enters supplment intake, stored into .csv
-    - comparison between recommended intake and supplement intake is made and app records if recommended is met
-        - if the same vitamin is recorded more than once within the same day, the latest record will overwrite existing
-    - if user is not meeting recommended intake food is recommended to increase vitamin intake (data read from separate file)
+    - User selects vitamin from list to track
+    - User is given recommended daily intake based on age
+    - Terminal asks if user takes any supplements, if yes, use is asked to enter supplment intake and the data is stored into .csv
+    - The app will inform if the user has met their daily recommended intake.
+        - If the same vitamin is recorded more than once within a day, the user will be asked if they want to overwrite existing data.
 
 3. View history
     - user can view dated history of vitamin intake
-
-4. Energy levels

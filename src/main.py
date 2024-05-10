@@ -53,14 +53,10 @@ while True:
         print('\033[39m')
         if ch2 == 1:
             # Vitamin selection list. Prints out list of vitamins and stores user selection to a variable
-            user_vit_select = vitamins.vitamin_list()
+            vitamin_ch = vitamins.vitamin_list()
 
-            # add direct to function?
-            # user_vit_select = input(f'\n{Fore.CYAN}Enter the number: ')
-            # print('\033[39m')
-
-            # Prints out heading of vitamin user selected. Stored into variable to be used later to identify correct recommendations.
-            vit_select = vitamins.vitamin_select(user_vit_select)
+            # Prints out heading of vitamin user selected. Store name of vitamin into variable to be used later to identify correct recommendations.
+            vit_select = vitamins.vitamin_select(vitamin_ch)
             
             # Reads list of recommended daily intake of vitamins and stores it into variable
             vit_reccomend_list_dict = vitamins.vitamin_open_list()
