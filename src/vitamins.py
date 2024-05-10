@@ -1,19 +1,31 @@
 import json
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 colorama.init(autoreset=True)
 
 def vitamin_list():
-    print('\n********** Vitamin Selection **********\n')
-    print('\nWhat would you like to track? \n')
-    vitamins = [
-        'Fish Oil',
-        'Magnesium',
-        'Vitamin D',
-        'B12'
-        ]
-    for key, value in enumerate(vitamins):
-        print(f'{key + 1}. {value}')
+    while True:
+        print('\n********** Vitamin Selection **********\n')
+        print('\nWhat would you like to track? \n')
+        vitamins = [
+            'Fish Oil',
+            'Magnesium',
+            'Vitamin D',
+            'B12'
+            ]
+        for key, value in enumerate(vitamins):
+            print(f'{key + 1}. {value}')
+
+        try:
+            user_vit_select = int(input(f'\n{Fore.CYAN}Enter the number: '))
+            print('\033[39m')
+            if user_vit_select < 1 or user_vit_select > 4:
+                print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
+            else:
+                return user_vit_select
+        
+        except (TypeError, KeyError):
+            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2, 3, 4\n')
 
 def vitamin_select(x):
     # add expectation here...KeyError caused
