@@ -16,7 +16,7 @@ def vitamin_list():
         print(f'{key + 1}. {value}')
 
 def vitamin_select(x):
-    # add expectation here...
+    # add expectation here...KeyError caused
     match x:
         case '1':
             print('\n********** Fish Oil ********** \n')
@@ -48,30 +48,33 @@ def vitamin_open_list():
     return intake_list
 
 def supplement_question(reccomended_intake):
-    # do i need to add error handling here?
-    supp_ques = input('\nAre you taking any supplments? [y/n]: ')
-    supp_ques_upper = supp_ques.upper()
-    
-    if supp_ques_upper == 'Y':
-        user_supp_mg = int(input('How much are you taking daily? '))
+    while True:
+        try:
+            supp_ques = input('\nAre you taking any supplments? [y/n]: ')
+            supp_ques_upper = supp_ques.upper()
+            if supp_ques_upper == 'Y':
+                user_supp_mg = int(input('How much are you taking daily? '))
+                
+                # add_to_user_file()
+                if user_supp_mg >= reccomended_intake:
+                    print(f'{Fore.GREEN}You are taking a sufficent amount!')
+                    recc_met = 'Yes :)'
+                    return user_supp_mg, recc_met
+                
+                else:
+                    print(f'{Fore.YELLOW}You are not taking a sufficent amount!')
+                    # print('Reccomended foods to increase vitamin intake: ...')
+                    recc_met = 'No :('
+                    return user_supp_mg, recc_met
+            
+            elif supp_ques_upper == 'N':
+                user_supp_mg = 0
+                recc_met = 'Unsure, no supplments were recorded :/'
+                # print('Here are some reccomended foods to increase vitamin intake: ')
+                return user_supp_mg, recc_met
+            
+            else:
+                print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between y or n\n')
         
-        # add_to_user_file()
-        if user_supp_mg >= reccomended_intake:
-            print(f'{Fore.GREEN}You are taking a sufficent amount!')
-            recc_met = 'Yes :)'
-            return user_supp_mg, recc_met
-        
-        else:
-            print(f'{Fore.YELLOW}You are not taking a sufficent amount!')
-            # print('Reccomended foods to increase vitamin intake: ...')
-            recc_met = 'No :('
-            return user_supp_mg, recc_met
-    
-    elif supp_ques_upper == 'N':
-        user_supp_mg = 0
-        recc_met = 'Unsure, no supplments were recorded :/'
-        # print('Here are some reccomended foods to increase vitamin intake: ')
-        return user_supp_mg, recc_met
-    
-    else:
-        print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice!')
+        except (ValueError, TypeError, KeyError):
+            print(f'\n{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between y or n\n')
