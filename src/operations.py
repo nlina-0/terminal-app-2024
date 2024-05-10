@@ -14,7 +14,7 @@ def read_history(username):
                     print(f'Recommended Met: {row["recommended met"]}')
                     print() 
 
-# overwrites existing data
+# Overwrites existing data if user wants to
 def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_met=0):
     updated = False
     user_data = {
@@ -31,18 +31,18 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
         'recommended met': recommended_met
     }
 
-    # read all data from the CSV file into memory
+    # Read all data from the CSV file into memory
     with open('user_data.csv', 'r') as f:
         reader = csv.DictReader(f)
         rows = list(reader)
 
-        # iterate over the data and identify the row to update
+        # Iterate over the data and identify the row to update
         for row in rows:
             if row['user'] == name and row['date'] == date and row['vitamin'] == vitamin:
                 # ask user if they want to update:
                 print('\n********** Record Exists **********')
                 print(f'\nData for {vitamin.title()} on {date} already exists!')
-                print("Supplement Intake:", row['supplement intake'])
+                print(f'Supplement Intake: {row["supplement intake"]}')
                 print("Recommended Met:", row['recommended met'])
                 overwrite = input('\nDo you want to overwrite? [y/n]: ')
 
@@ -57,7 +57,7 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
                     print(f'\nData for {vitamin.title()} on {date} not updated!')
                     return
         
-        # re-writes data with updated data
+        # Re-writes data with updated data
         with open('user_data.csv', 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=reader.fieldnames)
             writer.writeheader()
