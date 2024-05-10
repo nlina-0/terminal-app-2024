@@ -16,18 +16,18 @@ A terminal application that tracks user vitamins/supplement intake.
     - Signup: User creates account, enters name and age.
     - Login: If user has existing account, user can login using name.
 
-- Stores user account information in .csv (user name and age)
+- Stores user account information in .csv (user name and age).
 
 ### 2. Vitamin/supplement tracker
-- User selects vitamin from list to track
-- User is given recommended daily intake based on age
-- Terminal asks if user takes any supplements, if yes, user is asked to enter supplment intake and the data is stored into .csv
-- The app will inform if the user has met their daily recommended intake.
+- User selects vitamin from list to track.
+- User is given recommended daily intake based on age.
+- User is asked if they take any supplements, if yes, user is asked to enter supplment intake and the data is stored into .csv
+- The app will inform the user if they have met their daily recommended intake.
     - If the same vitamin is recorded more than once within a day, the user will be asked if they want to overwrite existing data.
 
 ### 3. View history
-- User can view dated history of vitamin intake
-- The app will read through user_data.csv and only return the data of current user
+- User can view dated history of vitamin intake.
+- The app will read through user_data.csv and only return the data of current user.
 
 
 ## Installation Guide

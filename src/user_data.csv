@@ -1,12 +1,4 @@
 user,date,vitamin,supplement intake,recommended intake,recommended met
-trish,08/05/24,fish oil,900,400,Yes :)
-trish,08/05/24,magnesium,0,310,0
-trish,09/05/24,fish oil,300,100,Yes :)
-trish,09/05/24,magnesium,0,310,"Unsure, no supplments were recorded :/"
-trish,09/05/24,b12,400,310,Yes :)
-trish,09/05/24,vitamin d,400,600,No :(
-loki,09/05/24,fish oil,100,100,Yes :)
-loki,09/05/24,magnesium,500,310,Yes :)
-ned,09/05/24,fish oil,100,100,Yes :)
-trish,10/05/24,fish oil,199,100,Yes :)
-trish,10/05/24,magnesium,0,310,"Unsure, no supplments were recorded :/"
+trish,10/05/24,magnesium,400,310,Yes :)
+trish,10/05/24,fish oil,100,100,Yes :)
+trish,10/05/24,vitamin d,0,600,"Unsure, no supplments were recorded :/"

@@ -1,4 +1,7 @@
 import csv
+import colorama
+from colorama import Fore, Style
+colorama.init(autoreset=True)
 
 def read_history(username):
     with open('user_data.csv', 'r') as f:
@@ -44,16 +47,17 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
                 print(f'\nData for {vitamin.title()} on {date} already exists!')
                 print(f'Supplement Intake: {row["supplement intake"]}')
                 print("Recommended Met:", row['recommended met'])
-                overwrite = input('\nDo you want to overwrite? [y/n]: ')
+                overwrite = input(f'\n{Fore.CYAN}Do you want to overwrite? [y/n]: ')
+                print('\033[39m')
 
                 if overwrite.lower() == 'y':
-                    print('\n********** Record Updated **********')
+                    print('********** Record Updated **********')
                     print(f'\nData for {vitamin.title()} on {date} updated!')
                     row.update(new_data)
                     updated = True
                     break
                 else: 
-                    print('\n********** Record Not Updated **********')
+                    print('********** Record Not Updated **********')
                     print(f'\nData for {vitamin.title()} on {date} not updated!')
                     return
         

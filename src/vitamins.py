@@ -76,6 +76,7 @@ def supplement_question(reccomended_intake):
                     return user_supp_mg, recc_met
             
             elif supp_ques_upper == 'N':
+                print(f'{Fore.YELLOW}No supplement intake was recorded!')
                 user_supp_mg = 0
                 recc_met = 'Unsure, no supplments were recorded :/'
                 return user_supp_mg, recc_met

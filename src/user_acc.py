@@ -14,7 +14,6 @@ def signup():
     
     print('\n********** User Account **********')
     print(f'\nWelcome, {username.capitalize()}! {age}y.o')
-
     return age, username_lower
 
 
@@ -32,8 +31,7 @@ def login():
                 print(f'{Fore.RED}{Style.BRIGHT}Invalid Choice! Please choose between 1, 2')
                 print('\033[39m')
 
-        username = input(f'{Fore.CYAN}Enter username: ')
-        print('\033[39m')
+        username = input('Enter username: ')
         username_lower = username.lower() 
         # list of usernames created from users.csv file
         stored_username = []
@@ -45,7 +43,7 @@ def login():
                 stored_username.append(row['username'])
                 stored_age.append(row['age'])
         
-        # print out user details
+        # Print out user details
         if username_lower in stored_username:
             print('\n********** User Account **********')
             user_index = stored_username.index(username)

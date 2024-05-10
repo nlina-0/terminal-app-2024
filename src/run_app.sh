@@ -1,9 +1,13 @@
 #!/bin/bash
-python3 -m venv .venv
+
+# if pip3 is installed then continue, if not then 
+    # tell user to install pip
+
+# if python is installed then continue, if not then
+    # tell user to install python
+
+# python3 -m venv .venv
 source .venv/bin/activate
-# pip3 install -r ./requirements.txt
+echo "Installing application..."
+pip3 install -r ./requirements.txt
 python3 main.py
-
-
-# pip install
-# python installed
