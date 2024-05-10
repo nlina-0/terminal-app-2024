@@ -1,6 +1,6 @@
 import csv
 import colorama
-from colorama import Fore, Style
+from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
 def read_history(username):
@@ -14,7 +14,7 @@ def read_history(username):
                     print(f'Vitamin: {row["vitamin"].title()}')
                     print(f'Recommended Intake: {row["recommended intake"]}')
                     print(f'Supplement Intake: {row["supplement intake"]}')
-                    print(f'Recommended Met: {row["recommended met"]}')
+                    print(f'{Fore.BLUE}{Back.WHITE}{Style.BRIGHT}Sufficient amount taken: {row["recommended met"]}')
                     print() 
 
 # Overwrites existing data
@@ -47,19 +47,27 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
                 print(f'\nData for {vitamin.title()} on {date} already exists!')
                 print(f'Supplement Intake: {row["supplement intake"]}')
                 print("Recommended Met:", row['recommended met'])
-                overwrite = input(f'\n{Fore.CYAN}Do you want to overwrite? [y/n]: ')
-                print('\033[39m')
+                
+                while True:
+                    try:
+                        overwrite = input(f'\n{Fore.CYAN}Do you want to overwrite? [y/n]: ')
+                        print('\033[39m')
 
-                if overwrite.lower() == 'y':
-                    print('********** Record Updated **********')
-                    print(f'\nData for {vitamin.title()} on {date} updated!')
-                    row.update(new_data)
-                    updated = True
-                    break
-                else: 
-                    print('********** Record Not Updated **********')
-                    print(f'\nData for {vitamin.title()} on {date} not updated!')
-                    return
+                        if overwrite.lower() == 'y':
+                            print('********** Record Updated **********')
+                            print(f'\nData for {vitamin.title()} on {date} updated!')
+                            row.update(new_data)
+                            updated = True
+                            break
+                        elif overwrite.lower() == 'n': 
+                            print('********** Record Not Updated **********')
+                            print(f'\nData for {vitamin.title()} on {date} not updated!')
+                            return
+                        else:
+                            print(f'{Fore.RED}Invalid Choice! Please choose between y or n')
+                    except (ValueError, TypeError, KeyError):
+                        print(f'{Fore.RED}Invalid Choice! Please choose between y or n')
+                    
         
         # Re-writes data with updated data
         with open('user_data.csv', 'w', newline='') as f:

@@ -37,7 +37,7 @@ def login():
                 print(f'{Fore.RED}Invalid Choice! Please choose between 1, 2')
                 print('\033[39m')
 
-        username = input('Enter username: ')
+        username = input('Username: ')
         username_lower = username.lower() 
         # List of usernames created from users.csv file
         stored_username = []
