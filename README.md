@@ -33,7 +33,7 @@ User is presented with menu 2. The options are to track vitamin, view history or
 Data recorded for the same vitamin more than once on the same day will be overwritten or omitted. The user will have an option to overwrite. 
 
 ### 3. View history
-- User can view history of vitamin intake.
+- User can view dated history of vitamin intake, supplement amount and recommended intake.
 - The app will read through user_data.csv and only return the data of current user.  
 - The user can press enter to continue back to menu 2. 
 <br />
@@ -56,13 +56,16 @@ The script will:
 - colorama
 
 #### System Requirements
-- **Python 3** is needed to run this application. To check if you have Python3 installed or to check what version you have, input the following command:
+**Python 3** is needed to run this application. To check if you have Python3 installed or to check what version you have, input the following command:
 ```bash
 python --version
 ```
-- **Pip3** is needed to run this application. To see if you have pip3 installed, input the following command:
+- To install Python, check out https://installpython3.com/
+
+**Pip3** is needed to run this application. To see if you have pip3 installed, input the following command:
 ```bash
 pip --version
 ```
+- To install pip3, check out https://pypi.org/project/pip/
 
 <!-- ## Referenced Source -->

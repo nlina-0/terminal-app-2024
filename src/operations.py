@@ -42,7 +42,7 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
         # Iterate over the data and identify the row to update
         for row in rows:
             if row['user'] == name and row['date'] == date and row['vitamin'] == vitamin:
-                # Ask user if they want to overwrite existing data:
+                # Ask user if they want to overwrite existing data
                 print('\n********** Record Exists **********')
                 print(f'\nData for {vitamin.title()} on {date} already exists!')
                 print(f'Supplement Intake: {row["supplement intake"]}')
@@ -77,6 +77,13 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
         
         if not updated:
             with open('user_data.csv', 'a') as f:
-                fields = ['user', 'date', 'vitamin', 'supplement intake', 'recommended intake', 'recommended met']
+                fields = [
+                    'user', 
+                    'date', 
+                    'vitamin', 
+                    'supplement intake', 
+                    'recommended intake', 
+                    'recommended met'
+                    ]
                 output_f = csv.DictWriter(f, fieldnames=fields)
                 output_f.writerow(user_data)

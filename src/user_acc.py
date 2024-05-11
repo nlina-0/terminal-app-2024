@@ -18,8 +18,9 @@ def signup():
     with open('user_acc.csv', 'a') as f:
         f.write(f'{username_lower},{age}\n')
     
-    print('\n********** User Account **********')
+    # print('\n********** User Account **********')
     print(f'\nWelcome, {username.capitalize()}! {age}y.o')
+
     return age, username_lower
 
 
