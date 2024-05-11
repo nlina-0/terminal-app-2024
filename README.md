@@ -39,6 +39,18 @@ Data recorded for the same vitamin more than once on the same day will be overwr
 <br />
 
 ## Development Plan
+#### Development overview
+![trello overview](docs/trello_overview.png)
+#### Feature 1 
+![trello feature 1](docs/trello_feature1.png)
+#### Feature 2
+![trello feature 2](docs/trello_feature2_1.png)
+![trello feature 2](docs/trello_feature2_2.png)
+![trello feature 2](docs/trello_feature2_3.png)
+#### Feature 3
+![trello feature 3](docs/trello_feature3.png)
+#### Finalise
+![trello end](docs/trello_end.png)
 
 ## Installation Guide
 1. Change directory into **/src** folder.
