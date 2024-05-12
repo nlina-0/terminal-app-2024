@@ -3,8 +3,12 @@
 ## Repository
 [Ghithub Terminal App 2024](https://github.com/nlina-0/terminal-app-2024)
 
+https://github.com/nlina-0/terminal-app-2024
+
 ## Style Guide
 [PEP 8](https://peps.python.org/pep-0008/)
+
+https://peps.python.org/pep-0008/ 
 
 ## Features
 
