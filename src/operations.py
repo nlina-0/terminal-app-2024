@@ -35,7 +35,7 @@ def write_data(name, date, vitamin, user_rec_intake, user_supp=0, recommended_me
     }
 
     # Read all data from the CSV file into memory
-    with open('user_data.csv', 'r') as f:
+    with open('user_data.csv', 'r', newline='') as f:
         reader = csv.DictReader(f)
         rows = list(reader)
 

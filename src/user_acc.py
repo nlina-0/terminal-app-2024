@@ -15,7 +15,7 @@ def signup():
             print(f'{Fore.RED}Age must be a valid integer. Please try again.')
 
     # Appends the username, password and age to users.csv file
-    with open('user_acc.csv', 'a') as f:
+    with open('user_acc.csv', 'a', newline='') as f:
         f.write(f'{username_lower},{age}\n')
     
     # print('\n********** User Account **********')
